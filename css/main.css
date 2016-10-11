@@ -8,6 +8,7 @@ body {
     padding: 0;
     font-family: sans-serif;
     font-weight: lighter;
+    background-color: #f1f1f1;
 }
 
 #main {
@@ -85,4 +86,9 @@ body {
 .printable {
     border: 1px dotted #CCCCCC ;
 padding: 10px 10px 10px 10px ;
+}
+
+.container {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
 }
