@@ -1,0 +1,68 @@
+<ul id="table-tabs" class="nav nav-tabs responsive" style="margin-top: 10px;">
+  <li role="presentation"><a href="#/authors">Authors</a></li>
+  <li role="presentation"><a href="#/advisors">Advisors</a></li>
+  <li role="presentation"><a href="#/subjects">Subjects</a></li>
+  <li role="presentation" class="active"><a href="#/external-publications">External Publications</a></li>              
+</ul>   
+<input style="margin-top: 10px; border-radius: 0;" type="text" class="form-control" placeholder="Search" ng-model="searchTerm">
+<div class="table-responsive">
+<table class="table">
+    <thead>
+      <tr>
+        <th>
+            <a href="#/external-publications" ng-click="sortType = 'titleofexternalpublication'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'titleofexternalpublication'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Title</a>
+          
+        </th>
+        <th>
+            <a href="#/external-publications" ng-click="sortType = 'author'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'author'" class="glyphicon glyphicon-triangle-bottom"></span>
+                Author</a>    
+        </th>            
+        <th>
+            <a href="#/external-publications" ng-click="sortType = 'authorcommitteemember1'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'authorcommitteemember1'" class="glyphicon glyphicon-triangle-bottom"></span>
+                Advisor</a>    
+        </th>
+        <th>
+            <a href="#/external-publications" ng-click="sortType = 'authorcommitteemember2'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'authorcommitteemember2'" class="glyphicon glyphicon-triangle-bottom"></span>
+                Committe Member</a>    
+        </th>
+        <th>
+            <a href="#/external-publications" ng-click="sortType = 'authorcommitteemember3'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'authorcommitteemember3'" class="glyphicon glyphicon-triangle-bottom"></span>
+                Committe Member</a>    
+        </th>
+        <th>
+            <a href="#/external-publications" ng-click="sortType = 'authorcommitteemember4'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'authorcommitteemember4'" class="glyphicon glyphicon-triangle-bottom"></span>
+                Committe Member</a>    
+        </th>
+        <th>
+            <a href="#/external-publications" ng-click="sortType = 'authorcommitteemember5'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'authorcommitteemember5'" class="glyphicon glyphicon-triangle-bottom"></span>
+                Committe Member</a>    
+        </th>
+        <th>
+            <a href="#/external-publications" ng-click="sortType = 'othercitinginformation'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'othercitinginformation'" class="glyphicon glyphicon-triangle-bottom"></span>
+                Citing Information</a>    
+        </th>          
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="ext in externalPubs | orderBy:sortType:sortReverse | filter:searchTerm"> <!-- <tr ng-repeat="auth in authInfo | orderBy:sortType:sortReverse | filter:searchTerm"> -->
+        <td>{{ext.titleofexternalpublication}}</td>
+        <td>{{ext.author}}</td>  
+        <td>{{ext.authorcommitteemember1}}</td>
+        <td>{{ext.authorcommitteemember2}}</td>  
+        <td>{{ext.authorcommitteemember3}}</td>
+        <td>{{ext.authorcommitteemember4}}</td>  
+        <td>{{ext.authorcommitteemember5}}</td>  
+        <td>{{ext.othercitinginformation}}</td>        
+      </tr>
+    </tbody>
+  </table>
+</div>

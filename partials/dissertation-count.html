@@ -1,0 +1,82 @@
+<ul id="report-tabs" class="nav nav-tabs responsive" style="margin-top: 10px;">
+  <li role="presentation"><a href="#/averages">Averages</a></li>                                                
+  <li role="presentation" class="active"><a href="#/dissertation-count">Dissertation Count</a></li>                
+  <li role="presentation"><a href="#/subject-years">Subject/Years</a></li>                
+  <li role="presentation"><a href="#/method-years">Method/Years</a></li>                
+</ul>  
+<input style="margin-top: 10px; border-radius: 0;" type="text" class="form-control" placeholder="Search" ng-model="searchTerm">
+
+<div class="table-responsive">
+<table class="table">
+    <thead>
+      <tr>
+        <th>
+            <a href="#/dissertation-count" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'name'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Advisor Name</a>
+          
+        </th>
+        <th>
+            <a href="#/dissertation-count" ng-click="sortType = 'dissertations'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'dissertations'" class="glyphicon glyphicon-triangle-bottom"></span>
+                Dissertation Count</a>    
+        </th>
+        <th>
+            <a href="#/dissertation-count" ng-click="sortType = 'yearsToCompletion'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'yearsToCompletion'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Avg. Years To Completion</a>
+          
+          </th>             
+        <th>
+            <a href="#/dissertation-count" ng-click="sortType = 'subjectCategory'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'subjectCategory'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Subject Category</a>
+          
+          </th>
+        <th>
+            <a href="#/dissertation-count" ng-click="sortType = 'methodsUsed'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'methodsUsed'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Methods Used</a>
+          
+          </th>  
+        <th>
+            <a href="#/dissertation-count" ng-click="sortType = 'countAdv'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'countAdv'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Advisor Count</a>
+          
+          </th>  
+        <th>
+            <a href="#/dissertation-count" ng-click="sortType = 'numPub'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'numPub'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Number of Publications</a>
+          
+          </th>  
+        <th>
+            <a href="#/dissertation-count" ng-click="sortType = 'subCatCount'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'subCatCount'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            # Of Subject Categories</a>
+          
+          </th> 
+        <th>
+            <a href="#/dissertation-count" ng-click="sortType = 'methUsedCount'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'methUsedCount'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            # of Methods Used</a>
+          
+          </th>           
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="diss in dissCount | orderBy:sortType:sortReverse | filter:searchTerm"> <!-- <tr ng-repeat="auth in authInfo | orderBy:sortType:sortReverse | filter:searchTerm"> -->
+        <td>{{diss.name}}</td>
+        <td>{{diss.dissertations}}</td>
+        <td>{{diss.yearsToCompletion}}</td>
+        <td>{{diss.subjectCategory}}</td>        
+        <td>{{diss.methodsUsed}}</td>          
+        <td>{{diss.countAdv}}</td>          
+        <td>{{diss.numPub}}</td>          
+        <td>{{diss.subCatCount}}</td>          
+        <td>{{diss.methUsedCount}}</td>          
+      </tr>
+    </tbody>
+  </table>
+</div>

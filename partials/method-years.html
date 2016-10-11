@@ -1,0 +1,40 @@
+ <ul id="report-tabs" class="nav nav-tabs responsive" style="margin-top: 10px;">
+  <li role="presentation"><a href="#/averages">Averages</a></li>                                                
+  <li role="presentation"><a href="#/dissertation-count">Dissertation Count</a></li>                
+  <li role="presentation"><a href="#/subject-years">Subject/Years</a></li>                
+  <li role="presentation" class="active"><a href="#/method-years">Method/Years</a></li>                
+</ul>
+
+<input style="margin-top: 10px; border-radius: 0;" type="text" class="form-control" placeholder="Search" ng-model="searchTerm">
+
+<div class="table-responsive">
+<table class="table">
+    <thead>
+      <tr>
+        <th>
+            <a href="#/method-years" ng-click="sortType = 'primarymethodused'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'primarymethodused'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Method</a>
+          
+        </th>
+        <th>
+            <a href="#/method-years" ng-click="sortType = 'years'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'years'" class="glyphicon glyphicon-triangle-bottom"></span>
+                Average Years To Completion</a>    
+        </th>
+        <th>
+            <a href="#/method-years" ng-click="sortType = 'dissertationCount'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'dissertationCount'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Number Of Dissertations</a>
+          
+          </th>                        
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="mthd in methodYears | orderBy:sortType:sortReverse | filter:searchTerm"> <!-- <tr ng-repeat="auth in authInfo | orderBy:sortType:sortReverse | filter:searchTerm"> -->
+        <td>{{mthd.primarymethodused}}</td>
+        <td>{{mthd.years}}</td>
+        <td>{{mthd.dissertationCount}}</td>          
+      </tr>
+    </tbody>
+  </table>

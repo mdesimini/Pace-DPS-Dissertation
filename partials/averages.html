@@ -1,0 +1,75 @@
+<ul id="report-tabs" class="nav nav-tabs responsive" style="margin-top: 10px;">
+  <li role="presentation" class="active"><a href="#/averages">Averages</a></li>                                                
+  <li role="presentation"><a href="#/dissertation-count">Dissertation Count</a></li>                
+  <li role="presentation"><a href="#/subject-years">Subject/Years</a></li>                
+  <li role="presentation"><a href="#/method-years">Method/Years</a></li>                
+</ul>  
+<input style="margin-top: 10px; border-radius: 0;" type="text" class="form-control" placeholder="Search" ng-model="searchTerm">
+
+<div class="table-responsive">
+<table class="table">
+    <thead>
+      <tr>
+        <th>
+            <a href="#/averages" ng-click="sortType = 'author'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'author'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Months To Completion</a>
+          
+        </th>
+        <th>
+            <a href="#/averages" ng-click="sortType = 'dissertationtitle'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'dissertationtitle'" class="glyphicon glyphicon-triangle-bottom"></span>
+                Total Pages</a>    
+        </th>
+        <th>
+            <a href="#/averages" ng-click="sortType = 'classyear'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'classyear'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Pages without Appendices</a>
+          
+          </th>             
+        <th>
+            <a href="#/averages" ng-click="sortType = 'monthstocompletion'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'monthstocompletion'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Number of Figures</a>
+          
+          </th>
+        <th>
+            <a href="#/averages" ng-click="sortType = 'committeemember'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'committeemember'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Number of Tables</a>
+          
+          </th>  
+        <th>
+            <a href="#/averages" ng-click="sortType = 'committeemember'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'committeemember'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Number of References</a>
+          
+          </th>  
+        <th>
+            <a href="#/averages" ng-click="sortType = 'committeemember'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'committeemember'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Bibliography Documents</a>
+          
+          </th>  
+        <th>
+            <a href="#/averages" ng-click="sortType = 'committeemember'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'committeemember'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Fractions of Years Not Enrolled</a>
+          
+          </th>            
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="avg in averages | orderBy:sortType:sortReverse | filter:searchTerm"> <!-- <tr ng-repeat="auth in authInfo | orderBy:sortType:sortReverse | filter:searchTerm"> -->
+        <td>{{avg.months}}</td>
+        <td>{{avg.totalPages}}</td>
+        <td>{{avg.withoutAppendices}}</td>
+        <td>{{avg.figuresNum}}</td>        
+        <td>{{avg.tableNum}}</td>          
+        <td>{{avg.referencesNum}}</td>          
+        <td>{{avg.bibliographyNum}}</td>          
+        <td>{{avg.notEnrolled}}</td>          
+      </tr>
+    </tbody>
+  </table>
+</div>

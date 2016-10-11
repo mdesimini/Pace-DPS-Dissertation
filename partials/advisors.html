@@ -1,0 +1,35 @@
+<ul id="table-tabs" class="nav nav-tabs responsive" style="margin-top: 10px;">
+  <li role="presentation"><a href="#/authors">Authors</a></li>
+  <li role="presentation" class="active"><a href="#/advisors">Advisors</a></li>
+  <li role="presentation"><a href="#/subjects">Subjects</a></li>
+  <li role="presentation"><a href="#/external-publications">External Publications</a></li>              
+</ul>   
+
+
+<input style="margin-top: 10px; border-radius: 0;" type="text" class="form-control" placeholder="Search" ng-model="searchTerm">
+
+<div class="table-responsive">
+<table class="table">
+    <thead>
+      <tr>
+        <th>
+            <a href="#/advisors" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'name'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Advisor Name</a>
+          
+        </th>
+        <th>
+            <a href="#/advisors" ng-click="sortType = 'institution'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'institution'" class="glyphicon glyphicon-triangle-bottom"></span>
+                Institution</a>    
+        </th>            
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="advisor in advisorInfo | orderBy:sortType:sortReverse | filter:searchTerm"> <!-- <tr ng-repeat="auth in authInfo | orderBy:sortType:sortReverse | filter:searchTerm"> -->
+        <td>{{advisor.name}}</td>
+        <td>{{advisor.institution}}</td>         
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,88 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+
+#main {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+#logo {
+    max-width: 150px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+}
+
+#title {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 50px;
+    color: #01508D;
+    font-weight: 100;    
+}
+
+#header {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+#nav {
+    position: absolute;
+    left: 0;
+}
+
+.navbar-brand {
+    margin: 0;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 0;  
+}
+
+#table-tabs {
+    display: block;
+}
+
+#report-tabs {
+    display: block;
+}
+
+#nav .active a {
+    background-color: #01508D !important;
+}
+
+#authorNameLink:hover {
+    cursor: pointer;
+}
+
+.mod-tbl tr td:first-child{
+    
+}
+
+.modal-content {
+    padding: 50px;
+}
+
+.panel-group {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.subjDissTitleLink:hover {
+    cursor: pointer;
+    background-color: #f3f3f3;
+}
+
+.printable {
+    border: 1px dotted #CCCCCC ;
+padding: 10px 10px 10px 10px ;
+}

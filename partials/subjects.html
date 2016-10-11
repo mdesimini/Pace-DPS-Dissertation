@@ -1,0 +1,156 @@
+<ul id="table-tabs" class="nav nav-tabs responsive" style="margin-top: 10px;">
+  <li role="presentation"><a href="#/authors">Authors</a></li>
+  <li role="presentation"><a href="#/advisors">Advisors</a></li>
+  <li role="presentation" class="active"><a href="#/subjects">Subjects</a></li>
+  <li role="presentation"><a href="#/external-publications">External Publications</a></li>              
+</ul>  
+<!--
+<ul id="report-tabs" class="nav nav-tabs responsive" style="margin-top: 10px;">
+  <li role="presentation" class="active"><a href="#/averages">Averages</a></li>                                                
+  <li role="presentation"><a href="#/dissertation-count">Dissertation Count</a></li>                
+  <li role="presentation"><a href="#/subject-years">Subject/Years</a></li>                
+  <li role="presentation"><a href="#/method-years">Method/Years</a></li>                
+</ul>  
+-->
+<input style="margin-top: 10px; border-radius: 0;" type="text" class="form-control" placeholder="Search" ng-model="searchTerm">
+
+
+
+<div class="table-responsive">
+<table class="table">
+    <thead>
+      <tr>
+        <th>
+            <a href="#/subjects" ng-click="sortType = 'primarysubjectcategory'; sortReverse = !sortReverse">
+            <span ng-show="sortType == 'primarysubjectcategory'" class="glyphicon glyphicon-triangle-bottom"></span>            
+            Subject</a>
+          
+        </th>           
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="sub in subjectInfo | orderBy:sortType:sortReverse | filter:searchTerm"> <!-- <tr ng-repeat="auth in authInfo | orderBy:sortType:sortReverse | filter:searchTerm"> -->
+
+        <td class="subjDissTitleLink" data-toggle="modal" data-target="#subjModal" ng-click="getPapersBySubject(sub.primarysubjectcategory)">{{sub.primarysubjectcategory}}</td>          
+      </tr>
+    </tbody>
+  </table>
+    
+    <div class="modal fade" id="subjModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog  modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h2 class="modal-title" style="text-align: center;" id="myModalLabel"></h2>
+              <h4 class="modal-title" style="text-align: center; font-size: 14px; font-style: italic;" id="myModalLabel"></h4>
+          </div>
+          <table class="table mod-tbl">
+            <tr ng-repeat="pap in papersBySubjInfo">
+                <td class="subjDissTitleLink" ng-click="getDescAuthInfo(pap.authorid)" data-toggle="modal" data-target="#authorModal2">{{pap.dissertationtitle}}</td>  
+            </tr>              
+          </table>            
+          <div class="modal-body">
+            <!-- Abstract -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>  
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="modal fade" id="authorModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog  modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h2 class="modal-title" style="text-align: center;" id="myModalLabel">{{descAuthInfo[0].author}}</h2>
+              <h4 class="modal-title" style="text-align: center; font-size: 14px; font-style: italic;" id="myModalLabel">{{descAuthInfo[0].dissertationtitle}}</h4>
+          </div>
+          <table class="table mod-tbl">
+            <tr>
+                <td><b>Committe Member 2:</b> {{descAuthInfo[0].committeemember2}}</td>  
+                <td><b>Primary Subject Category:</b> {{descAuthInfo[0].primarysubjectcategory}}</td>  
+            </tr>
+            <tr>
+                <td><b>Committe Member 3:</b> {{descAuthInfo[0].committeemember3}}</td>  
+                <td><b>Secondary Subject Category:</b> {{descAuthInfo[0].secondarysubjectcategory}}</td>  
+            </tr>
+            <tr>
+                <td><b>Committe Member 4:</b> {{descAuthInfo[0].committeemember4}}</td>  
+                <td><b>Tertiary Subject Category:</b> {{descAuthInfo[0].tertiarysubjectcategory}}</td>  
+            </tr>
+            <tr>
+                <td><b>Committe Member 5:</b> {{descAuthInfo[0].committeemember5}}</td>  
+                <td><b>Primary Method Used:</b> {{descAuthInfo[0].primarymethodused}}</td>  
+            </tr>
+            <tr>
+                <td><b>Earlier Advisor 1:</b> </td>  
+                <td><b>Secondary Method Used:</b> {{descAuthInfo[0].secondarymethodused}}</td>  
+            </tr>
+            <tr>
+                <td><b>Earlier Advisor 2:</b> </td>  
+                <td><b>Tertiary Method Used:</b> {{descAuthInfo[0].tertiarymethodused}}</td>  
+            </tr>              
+
+            <tr>
+                <td><b>Total Number of Pages:</b> {{descAuthInfo[0].numberofpagestotal}}</td>  
+                <td><b>Successful Defense Date:</b> {{descAuthInfo[0].dateofsuccessfuldefense}}</td>  
+            </tr>
+            <tr>
+                <td><b>Pages Without Appendices:</b> {{descAuthInfo[0].numberofpageswithoutappendices}}</td>  
+                <td><b>Fraction of Years Not Enrolled:</b> {{descAuthInfo[0].fractionofyearsnotenrolled}}</td>  
+            </tr>
+            <tr>
+                <td><b>Number of Figures:</b> {{descAuthInfo[0].numberoffigures}}</td>  
+                <td><b>Title of External Publication:</b> {{descAuthInfo[0].titleofexternalpublication1}}</td>  
+            </tr>
+            <tr>
+                <td><b>Number of Tables:</b> {{descAuthInfo[0].numberoftables}}</td>  
+                <td><b>Title of External Publication:</b> {{descAuthInfo[0].titleofexternalpublication2}}</td>  
+            </tr>
+            <tr>
+                <td><b>Number of References:</b> {{descAuthInfo[0].numberofnumberedandcitedreferences}}</td>  
+                <td> </td>  
+            </tr>
+            <tr>
+                <td><b># Of Bibliography Documents:</b> {{descAuthInfo[0].numberofbibliographydocuments}}</td>  
+                <td> </td>  
+            </tr>              
+          </table>            
+          <div class="modal-body">
+            <!-- Abstract -->
+          </div>
+            <a href="#/">Print</a>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>      
+</div>
+
+
+<!--
+
+          <div class="panel-group" ng-repeat="sub in subjectInfo | orderBy:sortType:sortReverse | filter:searchTerm">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" ng-click="" ng-href="/#{{sub.id}}">{{sub.primarysubjectcategory}}</a>
+                </h4>
+              </div>
+              <div id="{{sub.id}}" class="panel-collapse collapse">
+                <div class="panel-body" ng-repeat="papers in papersBySubjInfo"><a ng-href="/#">{{papers.dissertationtitle}}</a></div>
+                <div class="panel-footer">Panel Footer</div>
+              </div>
+            </div>
+          </div>
+-->
