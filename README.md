@@ -2,4 +2,4 @@
 
 Web application repo for Pace University's DPS Dissertation Database.
 
-[Demo Current Version](http://www.mattdesimini.com/sites/in-progress/dps/#/)
+[Demo Current Version](https://vulcan.seidenberg.pace.edu/~f15-cs691-dps/new/)
