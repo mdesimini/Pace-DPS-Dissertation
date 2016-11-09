@@ -6,9 +6,9 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
     font-weight: lighter;
     background-color: #f1f1f1;
+    font-family: sans-serif;
 }
 
 #main {
@@ -18,11 +18,20 @@ body {
 }
 
 #logo {
+    width: 200px;
+    vertical-align: top;
+    display: block;
+    margin: 5px;
+}
+
+/*
+#logo {
     max-width: 150px;
     display: inline-block;
     vertical-align: top;
     margin: 10px;
 }
+*/
 
 #title {
     display: inline-block;
@@ -116,4 +125,8 @@ padding: 10px 10px 10px 10px ;
     margin: 0 auto;
     padding-left: 80px;
     padding-right: 80px;
+}
+
+#authorTitleLink:hover {
+    cursor: pointer;
 }

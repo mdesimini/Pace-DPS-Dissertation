@@ -1,13 +1,16 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");  
+
+//header("Content-Type: application/json; charset=UTF-8");  
+
+header("Content-Type: application/json; charset=ISO-8859-1");
 
 require_once('conn.php');
 
 $variable = $_GET['authid']; 
 
 
-$result = $conn->query("SELECT author, dissertationtitle, classyear, dateofsuccessfuldefense, monthstocompletion, committeemember1, fractionofyearsnotenrolled, committeemember2, committeemember3, committeemember4, committeemember5, primarysubjectcategory, secondarysubjectcategory, tertiarysubjectcategory, primarymethodused, secondarymethodused, tertiarymethodused, numberofpagestotal, numberofpageswithoutappendices, numberoffigures, numberoftables, numberofnumberedandcitedreferences, numberofbibliographydocuments, titleofexternalpublication1, titleofexternalpublication2, abstract FROM dissertation WHERE authorid = " . $variable);
+$result = $conn->query("SELECT author, dissertationtitle, classyear, dateofsuccessfuldefense, monthstocompletion, committeemember1, fractionofyearsnotenrolled, committeemember2, committeemember3, committeemember4, committeemember5, primarysubjectcategory, secondarysubjectcategory, tertiarysubjectcategory, primarymethodused, secondarymethodused, tertiarymethodused, numberofpagestotal, numberofpageswithoutappendices, numberoffigures, numberoftables, numberofnumberedandcitedreferences, numberofbibliographydocuments, titleofexternalpublication1, titleofexternalpublication2 FROM dissertation WHERE authorid = " . $variable);
 
 
 
@@ -38,7 +41,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $outp .= '"numberofbibliographydocuments":"'   . $rs["numberofbibliographydocuments"]        . '",';
     $outp .= '"titleofexternalpublication1":"'   . $rs["titleofexternalpublication1"]        . '",';
     $outp .= '"titleofexternalpublication2":"'   . $rs["titleofexternalpublication2"]        . '",';
-    //$outp .= '"abstract":"'   . $rs["abstract"]        . '",';
+    $outp .= '"abstract":"'   . $rs["abstract"]        . '",';
     $outp .= '"committeemember1":"'. $rs["committeemember1"]     . '"}'; 
     
     

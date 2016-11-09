@@ -20,12 +20,12 @@
         <th>
             <a href="#/subject-years" ng-click="sortType = 'years'; sortReverse = !sortReverse">
             <span ng-show="sortType == 'years'" class="glyphicon glyphicon-triangle-bottom"></span>
-                Average Years To Completion</a>
+                Average Years To Completion</a><span class="glyphicon glyphicon-stats"  style="color: #23527C; margin-left: 5px; cursor:pointer" data-toggle="modal" data-target="#chartModalSY-AYTC2" ng-click="getAYTCChartDataSY()"></span>
         </th>
         <th>
             <a href="#/subject-years" ng-click="sortType = 'dissertationCount'; sortReverse = !sortReverse">
             <span ng-show="sortType == 'dissertationCount'" class="glyphicon glyphicon-triangle-bottom"></span>            
-            Number Of Dissertations</a>
+            Number Of Dissertations</a><span class="glyphicon glyphicon-stats"  style="color: #23527C; margin-left: 5px; cursor:pointer" data-toggle="modal" data-target="#chartModalSY-NOD2" ng-click="getNODChartDataSY()"></span>
           
           </th>                        
       </tr>
@@ -40,6 +40,42 @@
   </table>
 </div>
 
+<div id="chartModalSY-AYTC2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Average Years to Completion by Subject</h4>
+      </div>
+      <div class="modal-body">
+        <canvas id="chartModalSY-AYTC-Chart2" width="200" height="200"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
 
+  </div>
+</div>
 
+<div id="chartModalSY-NOD2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Number of Dissertations by Subject</h4>
+      </div>
+      <div class="modal-body">
+        <canvas id="chartModalSY-NOD-Chart2" width="200" height="200"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

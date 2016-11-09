@@ -1,6 +1,9 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");  
+//header("Content-Type: application/json; charset=UTF-8");  
+//header('Content-Type: text/html; charset=utf-8');
+
+header("Content-Type: text/html; charset=ISO-8859-1");
 
 require_once('conn.php');
 
@@ -35,6 +38,6 @@ while($r = mysqli_fetch_assoc($sth)) {
     //$rows[] = $r;
 }
 
-echo json_encode($rows);
+//echo json_encode($rows);
 
 ?>

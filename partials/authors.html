@@ -3,6 +3,7 @@
   <li role="presentation"><a href="#/advisors">Advisors</a></li>
   <li role="presentation"><a href="#/subjects">Subjects</a></li>
   <li role="presentation"><a href="#/external-publications">External Publications</a></li>              
+  <li role="presentation"><a href="#/keyword-search">Keyword Search</a></li>              
 </ul>   
  
 <input style="margin-top: 10px; border-radius: 0;" type="text" class="form-control" placeholder="Search" ng-model="searchTerm">
@@ -45,7 +46,7 @@
     <tbody>
       <tr ng-repeat="auth in authInfo | orderBy:sortType:sortReverse | filter:searchTerm"> <!-- <tr ng-repeat="auth in authInfo | orderBy:sortType:sortReverse | filter:searchTerm"> -->
         <td><a id="authorNameLink" ng-click="getDescAuthInfo(auth.id)" data-toggle="modal" data-target="#authorModal">{{auth.author}}</a></td> <!-- ng-href="/sites/in-progress/dps/test.html" -->
-        <td>{{auth.dissertationtitle}}</td>
+        <td><a id="authorTitleLink" style="cursor:pointer;" data-toggle="modal" ng-click="getAbstractById(auth.id)" data-target="#myModal4">{{auth.dissertationtitle}}</a></td>
         <td>{{auth.classyear}}</td>
         <td>{{auth.monthstocompletion}}</td>        
         <td>{{auth.committeemember}}</td>          
@@ -132,7 +133,7 @@
           <h4 class="modal-title">Abstract</h4>
         </div>
         <div class="modal-body" id="abstract-modal-body">
-          <p>{{abstract[0].abstract}}</p>
+          <!-- <p>{{abstract[0].abstract}}</p> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

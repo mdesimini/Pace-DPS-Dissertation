@@ -25,6 +25,10 @@ angular.module('dps')
             templateUrl: 'partials/external-publications.html',
             controller: 'MainController'
         })
+        .when('/keyword-search', {
+            templateUrl: 'partials/keywords.html',
+            controller: 'MainController'
+        })        
         .when('/averages', {
             templateUrl: 'partials/averages.html',
             controller: 'MainController'
