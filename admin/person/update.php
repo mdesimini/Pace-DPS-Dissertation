@@ -37,7 +37,7 @@ else
         else
         {
             $message = 'Welcome, '.$username;
-            include('include/create_body.php');
+            include('include/update_body.php');
         }
     }
     catch (Exception $e)
@@ -48,4 +48,3 @@ else
 
 ?>
 
-    

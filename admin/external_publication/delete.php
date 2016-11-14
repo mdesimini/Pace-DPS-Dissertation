@@ -1,14 +1,29 @@
-<?php //delete external publication, will show confirmation page
-?>
-<?php include '../_include/head.php'; ?>
 <?php
-$id = $_REQUEST['id'];
-$data = $externalPublication->get($id);
+// include database connection
+include '../config/database.php';
+ 
+try {
+     
+    // get record ID
+    // isset() is a PHP function used to verify if a value is there or not
+    $id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
+ 
+    // delete query
+    $query = "DELETE FROM externalpublication WHERE id = ?";
+    $stmt = $con->prepare($query);
+    $stmt->bindParam(1, $id);
+     
+    if($stmt->execute()){
+        // redirect to read records page and 
+        // tell the user record was deleted
+        header('Location: read.php?action=deleted');
+    }else{
+        die('Unable to delete record.');
+    }
+}
+ 
+// show error
+catch(PDOException $exception){
+    die('ERROR: ' . $exception->getMessage());
+}
 ?>
-<h1>Delete External Publication</h1>
-<div id="displayTable">
-<h2>Are you sure you want to delete <?=$data['titleofexternalpublication'];?>?</h2>
-<h3><a class="buttonLink" href="<?=$url_root?>/external_publication/index.php?del=<?=$data['id']?>">Yes</a> <a  class="buttonLink" href="<?=$url_root?>/external_publication/index.php">No</a></h3>
-</div>
-
-<?php include '../_include/footer.php'; ?>
